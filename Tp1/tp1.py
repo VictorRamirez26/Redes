@@ -19,9 +19,15 @@ def separarTramas(contenido):
                 trama_actual = trama_actual + byte
                 pos_sec_escape.append(count)
             else:
+                trama_actual = quitar_sec_escape(trama_actual)
                 tramas.append(trama_actual)
                 count += 1
                 trama_actual = "7E"
+
+        if i == len(contenido)-3: # La ultima trama de todas
+            trama_actual = quitar_sec_escape(trama_actual)
+            tramas.append(trama_actual)
+
 
     tramas_sin_sec_escape = mostrar_sec_escape(tramas,pos_sec_escape)
     return tramas,carga_util,tramas_sin_sec_escape
@@ -85,7 +91,6 @@ def verificar_checkSum(tramas,bool=False):
     check_sum_array = [] #Aca guardo el checksum de todas las tramas
     sum_array = []
     for trama_actual in tramas:
-
         checkSum_actual = trama_actual[len(trama_actual)-2:len(trama_actual)]
         check_sum_array.append(int(checkSum_actual,16))
 
@@ -114,7 +119,6 @@ def verificar_checkSum(tramas,bool=False):
         return correctos,incorrectos
 
 
-    
 
 archivo = open("Tramas_802-15-4.log","r")
 contenido = archivo.read()
