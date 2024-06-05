@@ -19,7 +19,8 @@ def receive_messages():
                 client.send(username.encode())
             elif message.find("exit") != -1:
                 client.close()
-                break
+                print("Cliente cerrado correctamente")
+                return
             else:
                 print(message)
         except:
@@ -31,6 +32,9 @@ def write_messages():
     while True:
         message = f"{username}: {input('')}"
         client.send(message.encode())
+        if (message.find("exit")):
+            client.close()
+
 
 receive_thread = threading.Thread(target=receive_messages)
 receive_thread.start()
