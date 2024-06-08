@@ -1,13 +1,13 @@
-import socket   
+import socket
 import threading
 
-host = '10.0.0.105'
+host = '25.41.61.1'
 port = 60002
 
 socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
 socket_server.bind((host, port))
 socket_server.listen()
+
 print(f"Server running on {host}:{port}")
 
 clientes_conectados = []
@@ -24,7 +24,6 @@ def broadcast(message, exclude_client=None):
 def desconectar_usuarios():
     for cliente in clientes_conectados:
         try:
-            broadcast("el servidor esta cerrando")
             cliente.close()
         except Exception as e:
             print(f"Error al cerrar la conexión de un cliente: {e}")
