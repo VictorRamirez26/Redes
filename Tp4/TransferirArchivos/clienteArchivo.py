@@ -9,7 +9,7 @@ def receive_file(filename, conn):
             f.write(bytes_read)
 
 def main():
-    host = '192.168.0.15'  # Aca tiene que ir la ip del servidor
+    host = '25.41.37.118'  # Aca tiene que ir la ip del servidor
     port = 60000 
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

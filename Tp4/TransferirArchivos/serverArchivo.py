@@ -13,7 +13,7 @@ def send_file(filename, conn):
         print("El archivo no existe")
 
 def main():
-    host = '192.168.0.15'
+    host = '25.41.37.118'
     port = 60000
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
